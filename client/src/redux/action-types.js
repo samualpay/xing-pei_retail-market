@@ -1,3 +1,5 @@
-export const ADD_COMMENT = 'add_comment'
-export const DELETE_COMMENT = 'delete_comment'
-export const RECIVE_COMMENTS = 'recive_comment'
+// export const ADD_COMMENT = 'add_comment'
+// export const DELETE_COMMENT = 'delete_comment'
+// export const RECIVE_COMMENTS = 'recive_comment'
+export const ADD_LOADING_STATUS = 'add_loading_status'
+export const SUB_LOADING_STATUS = 'sub_loading_status'
