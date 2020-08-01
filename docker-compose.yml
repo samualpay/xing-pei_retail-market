@@ -1,0 +1,22 @@
+version: '2'
+services:
+  web:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    image: retail-market:local
+    restart: always
+    environment: 
+      MONGODB_URI: mongodb://root:root@db:27017/admin
+    ports:
+      - "5000:5000"
+  db:
+    image: mongo:latest
+    restart: always
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27017:27017"
+    volumes:
+      - "/var/lib/mongo-data:/data/db"
