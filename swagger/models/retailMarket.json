@@ -1,4 +1,19 @@
 {
+    "retailMarkets": {
+        "type": "object",
+        "properties": {
+            "datas": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/retailMarket"
+                }
+            },
+            "totalCount": {
+                "type": "number",
+                "example": 24474
+            }
+        }
+    },
     "retailMarket": {
         "type": "object",
         "properties": {
