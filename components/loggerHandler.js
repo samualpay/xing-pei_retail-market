@@ -1,6 +1,6 @@
 
 function mergePropsAndOptions(props, options) {
-    return Object.assign(props, options)
+    return Object.assign({}, props, options)
 }
 class LoggerHandler {
     constructor(props = {}) {
