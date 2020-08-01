@@ -16,6 +16,7 @@ class ScheduleTimer {
                 },
                 start: true
             }));
+        setting.runner()
     };
 
     stop() {
