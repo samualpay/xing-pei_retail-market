@@ -5,14 +5,14 @@ services:
       context: .
       dockerfile: ./Dockerfile
     image: retail-market:local
-    restart: always
+    # restart: always
     environment: 
       MONGODB_URI: mongodb://root:root@db:27017/admin
     ports:
       - "5000:5000"
   db:
     image: mongo:latest
-    restart: always
+    # restart: always
     environment: 
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
