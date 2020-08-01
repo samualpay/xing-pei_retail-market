@@ -16,7 +16,7 @@
                     "in": "path",
                     "name": "version",
                     "type": "string",
-                    "example": "v1",
+                    "required": true,
                     "description": "api版號",
                     "enum": [
                         "v1"
@@ -72,10 +72,70 @@
                                             "list": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/definitions/sample"
+                                                    "$ref": "#/definitions/retailMarket"
                                                 }
                                             }
                                         }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "deprecated": false
+        }
+    },
+    "/{version}/retailMarkets/{_id}": {
+        "get": {
+            "tags": [
+                "Retail Market"
+            ],
+            "description": "用_id取得Retail Market",
+            "consumes": [
+                "application/json"
+            ],
+            "produces": [
+                "application/json"
+            ],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "version",
+                    "type": "string",
+                    "example": "v1",
+                    "description": "api版號",
+                    "required": true,
+                    "enum": [
+                        "v1"
+                    ]
+                },
+                {
+                    "in": "path",
+                    "name": "_id",
+                    "type": "string",
+                    "example": "v1",
+                    "description": "_id",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "example": "1"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "action exceed or not",
+                    "schema": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/BaseResponse"
+                            },
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "Data": {
+                                        "$ref": "#/definitions/retailMarket"
                                     }
                                 }
                             }

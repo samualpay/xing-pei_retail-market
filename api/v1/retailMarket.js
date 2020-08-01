@@ -37,7 +37,28 @@ exports.GetRetailMarkets = {
 		let limit = req.query.limit
 		let offset = req.query.offset
 		let result = await retailMarketService.findAll({ sortOrder, sortByColumn, limit, offset })
-		console.log(result)
+		return result
+	}
+}
+
+exports.GetRetailMarketById = {
+	method: 'get',
+	path: '/v1/retailMarkets/:id',
+	middlewares: [
+		paramMiddleware({
+			params: {
+				required: ['id'],
+				properties: {
+					id: {
+						type: 'number'
+					}
+				}
+			}
+		})
+	],
+	runner: async function (req) {
+		let id = req.params.id
+		let result = await retailMarketService.findById(id)
 		return result
 	}
 }

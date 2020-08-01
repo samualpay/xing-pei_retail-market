@@ -1,0 +1,37 @@
+{
+    "retailMarket": {
+        "type": "object",
+        "properties": {
+            "_id": {
+                "type": "number",
+                "description": "_Id",
+                "example": 1
+            },
+            " 平均(元 / 公斤)": {
+                "type": "string",
+                "description": "name",
+                "example": "33.00"
+            },
+            " 品名": {
+                "type": "string",
+                "description": "name",
+                "example": "蘿蔔"
+            },
+            " 市場": {
+                "type": "string",
+                "description": "name",
+                "example": "西寧"
+            },
+            "日期": {
+                "type": "string",
+                "description": "name",
+                "example": "2019-07-14"
+            },
+            " 種類": {
+                "type": "string",
+                "description": "name",
+                "example": "蔬菜"
+            }
+        }
+    }
+}

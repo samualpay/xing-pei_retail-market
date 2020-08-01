@@ -13,6 +13,12 @@ module.exports.findAll = async ({ sort, limit, offset }) => {
     let rawData = await retailMarketModel.find({}).sort(sort).skip(offset).limit(limit).exec()
     return rawData
 }
+module.exports.findById = async (id) => {
+    let rawData = await retailMarketModel.findOne({
+        '_id': id
+    }).exec()
+    return rawData
+}
 module.exports.count = async (conditions = {}) => {
     let count = await retailMarketModel.countDocuments(conditions).exec()
     return count
