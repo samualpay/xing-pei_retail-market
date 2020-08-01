@@ -64,7 +64,7 @@ router.use(function (err, req, res, next) {
   } else {
     res.status(500);
     res.send(responseFormatter.encodeSystemResult(err));
-    res.logger.error('API ERROR 500', err.stack)
+    res.logger.error('API ERROR 500', { stack: err.stack })
   }
 
 });
