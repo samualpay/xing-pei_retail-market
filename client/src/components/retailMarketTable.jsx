@@ -17,7 +17,7 @@ const columns = [
   },
   {
     title: ' 品名',
-    dataIndex: '  品名',
+    dataIndex: ' 品名',
     width: '15%',
   },
   {
