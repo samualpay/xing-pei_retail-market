@@ -1,6 +1,8 @@
 import { Table } from 'antd';
-import {findAllRetailMarket} from '../api/taipeiApis'
+import { findAllRetailMarket as taipeiFetch } from '../api/taipeiApis'
+import { findAllRetailMarket as localFetch } from '../api/localApi'
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 const columns = [
   {
     title: '_id',
@@ -36,42 +38,57 @@ const columns = [
   },
 ];
 const sortMapping = {
-  'ascend':'asc',
-  'descend':'desc'
+  'ascend': 'asc',
+  'descend': 'desc'
+}
+async function fetchHandle({ isFetchLocale, sortByColumn, sortOrder, offset, limit }) {
+  if (isFetchLocale) {
+    return localFetch({ sortByColumn, sortOrder, offset, limit })
+  } else {
+    let result = await taipeiFetch({ sortByColumn, sortOrder, offset, limit })
+    if (!result.success) {
+      result = await localFetch({ sortByColumn, sortOrder, offset, limit })
+    }
+    return result
+  }
 }
 class RetailMarketTable extends Component {
   state = {
-    data:[],
-    pagination:{
+    data: [],
+    pagination: {
       current: 1,
       pageSize: 10,
     },
-    loading:false
+    loading: false
   }
-  handleTableChange=(pagination,filters,sorter) => {
+  static propTypes = {
+    isFetchLocale: PropTypes.bool.isRequired
+  }
+  handleTableChange = (pagination, filters, sorter) => {
     let sortByColumn = sorter.field
-    let sortOrder =sortMapping[sorter.order]
-    this.fetch({sortByColumn,sortOrder,pagination})
+    let sortOrder = sortMapping[sorter.order]
+    this.fetch({ sortByColumn, sortOrder, pagination })
   }
-  fetch = async ({sortByColumn='_id',sortOrder='asc',pagination}) => {
-    let offset = (pagination.current-1) * pagination.pageSize
+  fetch = async ({ sortByColumn = '_id', sortOrder = 'asc', pagination }) => {
+    let { isFetchLocale } = this.props
+    let offset = (pagination.current - 1) * pagination.pageSize
     let limit = pagination.pageSize
-    this.setState({loading:true})
-    let result = await findAllRetailMarket({sortByColumn,sortOrder,offset,limit})
-    this.setState({loading:false})
-    if(result.success){
-     this.setState({
-       pagination:{
-        ...pagination,
-        total: result.totalCount
-       },
-       data:result.datas
-    })
+    this.setState({ loading: true })
+    let result = await fetchHandle({ isFetchLocale, sortByColumn, sortOrder, offset, limit })
+    this.setState({ loading: false })
+    if (result.success) {
+      this.setState({
+        pagination: {
+          ...pagination,
+          total: result.totalCount
+        },
+        data: result.datas
+      })
     }
   }
-  componentDidMount(){
-    const {pagination} = this.state
-    this.fetch({pagination})
+  componentDidMount() {
+    const { pagination } = this.state
+    this.fetch({ pagination })
   }
   render() {
     const { data, pagination, loading } = this.state;
