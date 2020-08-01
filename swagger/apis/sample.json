@@ -1,0 +1,57 @@
+{
+    "/{version}/samples": {
+        "get": {
+            "tags": [
+                "Sample"
+            ],
+            "description": "取得Sample列表",
+            "consumes": [
+                "application/json"
+            ],
+            "produces": [
+                "application/json"
+            ],
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "version",
+                    "type": "string",
+                    "example": "v1",
+                    "description": "api版號",
+                    "enum": [
+                        "v1"
+                    ]
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "action exceed or not",
+                    "schema": {
+                        "allOf": [
+                            {
+                                "$ref": "#/definitions/BaseResponse"
+                            },
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "Data": {
+                                        "type":"object",
+                                        "properties": {
+                                            "list": {
+                                                "type": "array",
+                                                "items": {
+                                                    "$ref":"#/definitions/sample"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "deprecated": false
+        }
+    }
+}

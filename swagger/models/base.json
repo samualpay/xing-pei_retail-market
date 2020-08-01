@@ -1,0 +1,33 @@
+{
+    "BaseResponse": {
+        "type": "object",
+        "properties": {
+            "Status": {
+                "type": "number",
+                "example": 1,
+                "description": "是否成功 1:成功 其他則失敗"
+            },
+            "ErrorMsg": {
+                "type": "string",
+                "description": "錯誤訊息",
+                "example": ""
+            }
+        }
+    },
+    "SimpleResponse": {
+        "allOf": [
+            {
+                "$ref": "#/definitions/BaseResponse"
+            },
+            {
+                "type": "object",
+                "properties": {
+                    "Data": {
+                        "type": "object",
+                        "example": {}
+                    }
+                }
+            }
+        ]
+    }
+}
