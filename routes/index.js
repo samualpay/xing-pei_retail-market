@@ -20,6 +20,7 @@ function baseRouterHandler(api) {
     } catch (err) {
       next(err)
     }
+    res.logger.info('API_END')
   }
 }
 function loadApis(apis) {
