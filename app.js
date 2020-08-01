@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var apiRoutes = require('./routes');
 var app = express();
+let schedule = require('./schedule')
 
 app.use(logger('dev'));
 app.use(express.json());
