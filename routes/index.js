@@ -35,7 +35,6 @@ let apiFiles = recFindByExt(filePath, 'js')
 apiFiles.forEach(elem => {
   loadApis(require(elem))
 })
-swaggerDocument.host = process.env.SWAGGER_API_DOMAIN || 'localhost:5000'
 router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 router.get('/StatusCode', function (req, res) {
   let language = req.query.lang || 'zh'
