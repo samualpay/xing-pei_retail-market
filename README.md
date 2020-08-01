@@ -1,13 +1,13 @@
 # xing-pei_retail-market
 
 ## DEMO Website
-- [link](https://xing-pei-retail-market.herokuapp.com/)
-
+- [website](https://xing-pei-retail-market.herokuapp.com/)
+- [swagger][https://xing-pei-retail-market.herokuapp.com/api/api-docs]
 
 ## Run at local
 ### Using NPM
 1. install mongo
-2. setting port 27017
+2. setting mongo port 27017
 3. create user "root:root" AuthDB:"admin"
 4. run command
 ```
@@ -17,8 +17,13 @@ npm start
 ```
 
 ### Using Docker-Compose
-1. check port 27017 not be used
-2. run command
+1. run command
 ```
 docker-compose up -d
 ```
+
+### Open Local website
+1. open link [http://localhost:5000](http://localhost:5000)
+
+### Note
+1. This project using port 5000 for website and port 27017 for mongodb
