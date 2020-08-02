@@ -36,17 +36,17 @@ apiFiles.forEach(elem => {
   loadApis(require(elem))
 })
 router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-router.get('/StatusCode', function (req, res) {
-  let language = req.query.lang || 'zh'
-  let keys = Object.keys(errors)
-  let list = keys.map(key => {
-    let obj = {}
-    obj.code = errors[key].status || -1
-    obj.msg = (errors[key]['msgList'][language]) ? errors[key]['msgList'][language] : ''
-    return obj
-  })
-  res.render('status_code', { 'title': "Status Code", 'list': list })
-})
+// router.get('/StatusCode', function (req, res) {
+//   let language = req.query.lang || 'zh'
+//   let keys = Object.keys(error)
+//   let list = keys.map(key => {
+//     let obj = {}
+//     obj.code = error[key].status || -1
+//     obj.msg = (error[key]['msgList'][language]) ? error[key]['msgList'][language] : ''
+//     return obj
+//   })
+//   res.render('status_code', { 'title': "Status Code", 'list': list })
+// })
 router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });

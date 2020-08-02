@@ -21,10 +21,10 @@ let obj = {
         "title": "XING PEI RETAIL MARKET API"
     },
     "basePath": "/api",
-    "externalDocs": {
-        "description": "Status Code",
-        "url": "/StatusCode"
-    },
+    // "externalDocs": {
+    //     "description": "Status Code",
+    //     "url": "/api/StatusCode"
+    // },
     "paths": {},
     "definitions": {}
 }
