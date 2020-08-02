@@ -2,7 +2,7 @@
 
 ## DEMO Website
 - [website](https://xing-pei-retail-market.herokuapp.com/)
-- [swagger][https://xing-pei-retail-market.herokuapp.com/api/api-docs]
+- [swagger](https://xing-pei-retail-market.herokuapp.com/api/api-docs)
 
 ## Run at local
 ### Using NPM
